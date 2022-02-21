@@ -7,7 +7,11 @@ import React from "react";
 function App() {
 	return (
 		<div className="App">
-			<Router>
+			<Router
+				basename={
+					window.location.href.split("/")[2] == "localhost:3000" ? "/" : process.env.PUBLIC_URL
+				}
+			>
 				<Navigation />
 				<AppRoutes />
 			</Router>
