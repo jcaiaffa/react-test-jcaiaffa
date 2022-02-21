@@ -13,6 +13,7 @@ type Props = {
 };
 
 const PostList = ({ searchBarVisible, paginationVisible, itemsPerPage, featuredPost }: Props) => {
+	const [activePostTitle, setActivePostTitle] = useState<string>("");
 	const [activePost, setActivePost] = useState<string>("");
 	const [currentPage, setCurrentPage] = useState(0);
 
@@ -21,7 +22,12 @@ const PostList = ({ searchBarVisible, paginationVisible, itemsPerPage, featuredP
 
 	return (
 		<div style={{ background: "#f0f0f0", minHeight: "auto" }}>
-			<Popup contents={activePost} visibility={visibility} setVisibility={setVisibility} />
+			<Popup
+				title={activePostTitle}
+				contents={activePost}
+				visibility={visibility}
+				setVisibility={setVisibility}
+			/>
 
 			<SearchFilter
 				value={filter}
@@ -33,6 +39,7 @@ const PostList = ({ searchBarVisible, paginationVisible, itemsPerPage, featuredP
 			/>
 			<Cards
 				items={items}
+				setActivePostTitle={setActivePostTitle}
 				setActivePost={setActivePost}
 				setVisibility={setVisibility}
 				filter={filter}

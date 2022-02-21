@@ -3,6 +3,7 @@ import parse from "html-react-parser";
 import styled from "styled-components";
 
 type Props = {
+	title: string;
 	contents: string;
 	visibility: string;
 	setVisibility: (setVisibility: string) => void;
@@ -23,18 +24,29 @@ const PopupWrapper = styled.div`
 		left: 50%;
 		transform: translate(-50%, -50%);
 		background: #fff;
-		width: 90%;
+		max-width: 90%;
 		height: 50vh;
 		padding: 40px 10px 40px 40px;
 		box-sizing: border-box;
 		box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
 		border-radius: 8px;
+		width: 700px;
+
+		a {
+			color: #0a4da5;
+		}
 
 		* {
 			max-width: 100%;
 		}
+
+		.wp-caption {
+			margin: auto;
+		}
+
 		img {
 			height: auto;
+			margin: auto;
 		}
 	}
 
@@ -76,7 +88,7 @@ const PopupWrapper = styled.div`
 	}
 `;
 
-const Popup = ({ contents, visibility, setVisibility }: Props) => {
+const Popup = ({ contents, title, visibility, setVisibility }: Props) => {
 	const closeModal = () => {
 		setVisibility("hidden");
 	};
@@ -87,7 +99,10 @@ const Popup = ({ contents, visibility, setVisibility }: Props) => {
 				<span className="close-icon" onClick={() => closeModal()}>
 					x
 				</span>
-				<div className="box">{contents !== undefined ? parse(contents) : ""}</div>
+				<div className="box">
+					<h1>{title}</h1>
+					{contents !== undefined ? parse(contents) : ""}
+				</div>
 			</div>
 		</PopupWrapper>
 	);

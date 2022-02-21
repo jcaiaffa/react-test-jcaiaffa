@@ -8,6 +8,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 type Props = {
 	items: Post[];
+	setActivePostTitle: (content: string) => void;
 	setActivePost: (content: string) => void;
 	setVisibility: (visible: string) => void;
 	filter: string;
@@ -82,6 +83,7 @@ const StyledCardList = styled.div`
 
 const Cards = ({
 	items,
+	setActivePostTitle,
 	setActivePost,
 	setVisibility,
 	filter,
@@ -89,7 +91,8 @@ const Cards = ({
 	featuredPost,
 	currentPage,
 }: Props) => {
-	const click = (content: string, visible: string) => {
+	const click = (title: string, content: string, visible: string) => {
+		setActivePostTitle(title);
 		setActivePost(content);
 		setVisibility(visible);
 	};
@@ -130,7 +133,9 @@ const Cards = ({
 									: `card`
 							}
 							onClick={() =>
-								featuredPost !== true ? click(post.content.rendered, "visible") : routeTo(post.id)
+								featuredPost !== true
+									? click(post.title.rendered, post.content.rendered, "visible")
+									: routeTo(post.id)
 							}
 						>
 							{filter === "" ? (
@@ -162,7 +167,9 @@ const Cards = ({
 								: `card`
 						}
 						onClick={() =>
-							featuredPost !== true ? click(post.content.rendered, "visible") : routeTo(post.id)
+							featuredPost !== true
+								? click(post.title.rendered, post.content.rendered, "visible")
+								: routeTo(post.id)
 						}
 					>
 						{filter === "" ? (
