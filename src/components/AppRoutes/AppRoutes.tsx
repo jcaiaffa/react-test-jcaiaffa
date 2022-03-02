@@ -4,6 +4,7 @@ import Home from "../../screens/Home/Home";
 import Blog from "../../screens/Blog/Blog";
 import About from "../../screens/About/About";
 import BlogDetail from "../../screens/BlogDetail/BlogDetail";
+import Login from "../../screens/Login/Login";
 
 const AppRoutes = () => {
 	return (
@@ -12,6 +13,7 @@ const AppRoutes = () => {
 			<Route path="/about" element={<About />}></Route>
 			<Route path="/blog" element={<Blog />}></Route>
 			<Route path="/blog/:id" element={<BlogDetail />}></Route>
+			<Route path="/login" element={<Login />}></Route>
 		</Routes>
 	);
 };

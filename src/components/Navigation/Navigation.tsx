@@ -64,6 +64,7 @@ const items: NavItem[] = [
 	{ title: "Home", to: "/" },
 	{ title: "About", to: "/about" },
 	{ title: "Blog", to: "/blog" },
+	{ title: "Login", to: "/login" },
 ];
 
 const Navigation = () => {

@@ -20,8 +20,6 @@ type Props = {
 const StyledCardList = styled.div`
 	display: flex;
 	padding: 60px;
-	column-gap: 40px;
-	row-gap: 40px;
 	flex-wrap: wrap;
 	justify-content: center;
 	max-width: 1200px;
@@ -37,7 +35,7 @@ const StyledCardList = styled.div`
 
 	.card {
 		cursor: pointer;
-		width: calc(33.33% - 67px);
+		width: calc(33.33% - 80px);
 		background: #fff;
 		border-radius: 8px;
 		box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
@@ -49,6 +47,7 @@ const StyledCardList = styled.div`
 		position: relative;
 		animation: fadeIn 0.4s ease-in-out;
 		animation-fill-mode: forwards;
+		margin: 20px;
 
 		.postThumb {
 			height: 200px;
@@ -71,6 +70,7 @@ const StyledCardList = styled.div`
 		&:hover {
 			box-shadow: 0 0 18px rgba(0, 0, 0, 0.18);
 		}
+
 		@media (max-width: 992px) {
 			width: 100%;
 		}

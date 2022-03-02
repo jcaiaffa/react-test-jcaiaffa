@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import parse from "html-react-parser";
+import useDispatch from "../../shared/hooks/useDispatch";
+import { setUsername } from "../../store/login";
 
 type Props = {
 	title: string;
@@ -54,9 +56,14 @@ const HeroWrapper = styled.div`
 		font-size: 50px;
 		margin: 0;
 	}
+	h2 {
+		text-transform: capitalize;
+	}
 `;
 
 const Hero = ({ title, subtitle, featuredImage }: Props) => {
+	const dispatch = useDispatch();
+
 	return (
 		<HeroWrapper
 			className={featuredImage ? "detailPost" : ""}
@@ -64,7 +71,15 @@ const Hero = ({ title, subtitle, featuredImage }: Props) => {
 		>
 			<div className="container">
 				<h1>{parse(title)}</h1>
-				{subtitle !== "" ? <h2>{subtitle}</h2> : null}
+				{subtitle !== "" ? (
+					<h2
+						onClick={() => {
+							dispatch(setUsername(""));
+						}}
+					>
+						{subtitle}
+					</h2>
+				) : null}
 			</div>
 		</HeroWrapper>
 	);

@@ -100,7 +100,7 @@ const Popup = ({ contents, title, visibility, setVisibility }: Props) => {
 					x
 				</span>
 				<div className="box">
-					<h1>{title}</h1>
+					<h1>{parse(title)}</h1>
 					{contents !== undefined ? parse(contents) : ""}
 				</div>
 			</div>

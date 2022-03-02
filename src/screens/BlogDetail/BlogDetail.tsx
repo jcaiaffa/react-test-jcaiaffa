@@ -28,6 +28,10 @@ const BlogDetailPage = styled.div`
 		max-width: 100%;
 	}
 
+	a {
+		color: #0a4da5;
+	}
+
 	.wp-caption {
 		margin: auto;
 	}
@@ -38,6 +42,11 @@ const BlogDetailPage = styled.div`
 
 	.postDetail {
 		max-width: 100%;
+
+		h2 {
+			font-size: 32px;
+			margin-bottom: 40px;
+		}
 
 		.backButton {
 			margin-bottom: 50px;
@@ -83,7 +92,7 @@ const BlogDetail = () => {
 						{`<< Back to Blog`}
 					</Link>
 
-					<h2>{post ? post.title.rendered : ""}</h2>
+					<h2>{post ? parse(post.title.rendered) : ""}</h2>
 					<div>{post ? parse(post.content.rendered) : ""}</div>
 				</div>
 			</BlogDetailPage>

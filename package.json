@@ -6,6 +6,7 @@
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.7.2",
     "@types/styled-components": "5.1.20",
     "gh-pages": "^3.2.3",
     "html-react-parser": "1.4.5",
@@ -14,6 +15,7 @@
     "react-dom": "17.0.2",
     "react-lazy-load-image-component": "^1.5.1",
     "react-paginate": "^8.1.1",
+    "react-redux": "^7.2.6",
     "react-router-dom": "6.2.1",
     "react-scripts": "5.0.0",
     "styled-components": "5.3.3"

@@ -21,7 +21,7 @@ const FilterWrapper = styled.div`
 
 	input {
 		height: 40px;
-		width: 100%;
+		width: calc(100% - 80px);
 		padding: 8px 20px;
 		font-size: 18px;
 	}

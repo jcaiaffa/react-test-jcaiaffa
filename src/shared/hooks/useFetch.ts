@@ -9,6 +9,7 @@ export const useFetch = (itemsPerPage: number) => {
 	const [filter, setFilter] = useState<string>("");
 
 	useEffect(() => {
+		let isActive = true;
 		async function loadPosts() {
 			const response = await fetch(
 				`https://techcrunch.com/wp-json/wp/v2/posts/?_embed&per_page=${
@@ -22,14 +23,20 @@ export const useFetch = (itemsPerPage: number) => {
 
 			const posts = await response.json();
 			const newPosts: Post[] = [...posts].splice(0, itemsPerPage);
-			setPosts(posts);
-			setItems(newPosts);
-			setVisibility("hidden");
-			setFilter("");
-			setIsloading(false);
+			if (isActive) {
+				setPosts(posts);
+				setItems(newPosts);
+				setVisibility("hidden");
+				setFilter("");
+				setIsloading(false);
+			}
 		}
 
 		loadPosts();
+
+		return () => {
+			isActive = false;
+		};
 	}, [itemsPerPage]);
 
 	return { posts, isLoading, items, setItems, filter, setFilter, visibility, setVisibility };
